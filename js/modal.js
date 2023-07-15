@@ -5,7 +5,7 @@ const fade = document.querySelector('#fade')
 const titleModal = document.querySelector('#title_modal')
 const textModal = document.querySelector('#text_modal')
 
-export const toggleModal = () => {
+const toggleModal = () => {
     [modal, fade].forEach((element) => element.classList.toggle('hide'))
 }
 
