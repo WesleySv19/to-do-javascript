@@ -1,3 +1,5 @@
+import {toggleModal} from './modal.js'
+
 const localStorageKey = 'to-do-list'
 const btn_new_task = document.querySelector('#btn-new-task')
 
@@ -14,7 +16,8 @@ btn_new_task.addEventListener('click', () => {
     
     if(!input.value) {
         input.style.border = '2px solid #FF6347'
-        alert('Digite algo para inserir em sua lista')
+        toggleModal()
+        // alert('Digite algo para inserir em sua lista')
 
     } else if(validateIfExistsNewTask()) {
         alert('Ops... já existe uma tarefa com essa descrição')
@@ -48,7 +51,7 @@ const showValues = () => {
 const enterKeyCode = () => {
     document.addEventListener('keydown', (e) => {
         if(e.key == 'Enter') {
-
+            btn_new_task.click()
         }
     })
 }
