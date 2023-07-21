@@ -26,7 +26,6 @@ const validateIfExistsNewTask = () => {
 const messageModal = (title, text) => {
     titleModal.textContent = title
     textModal.textContent = text
-    toggleModal()
 }
 
 btn_new_task.addEventListener('click', () => {
@@ -84,4 +83,3 @@ const removeItem = (data) => {
 }
 
 showValues()
-
