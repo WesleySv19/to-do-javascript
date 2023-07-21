@@ -9,10 +9,6 @@
     font-size: 1rem;
 }
 
-.open_modal {
-    
-}
-
 #close_modal {
     transition: 0.3s;
     opacity: 1;
