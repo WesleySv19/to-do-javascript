@@ -1,6 +1,20 @@
 
+const openModalButton = document.querySelector('#btn_new_task')
+const closeModalButton = document.querySelector('#close_modal')
+const modal = document.querySelector('#modal')
+const fade = document.querySelector('#fade')
+const titleModal = document.querySelector('#title_modal')
+const textModal = document.querySelector('#text_modal')
 const localStorageKey = 'to-do-list'
-const btn_new_task = document.querySelector('#btn-new-task')
+const btn_new_task = document.querySelector('#btn_new_task')
+
+const toggleModal = () => {
+    [modal, fade].forEach((element) => element.classList.toggle('hide'))
+}
+
+[openModalButton, closeModalButton, fade].forEach((element) => {
+    element.addEventListener('click', () => toggleModal())
+}) 
 
 const validateIfExistsNewTask = () => {
     let values = JSON.parse(localStorage.getItem(localStorageKey) || '[]')
@@ -9,17 +23,22 @@ const validateIfExistsNewTask = () => {
     return !exists ? false : true
 } 
 
+const messageModal = (title, text) => {
+    titleModal.textContent = title
+    textModal.textContent = text
+    toggleModal()
+}
+
 btn_new_task.addEventListener('click', () => {
     let input = document.querySelector('#input-new-task')
     input.style.border = ''
     
     if(!input.value) {
         input.style.border = '2px solid #FF6347'
-        // toggleModal()
-        // alert('Digite algo para inserir em sua lista')
+        messageModal('Erro', 'Ops digite algo para inserir em sua lista')
 
     } else if(validateIfExistsNewTask()) {
-        alert('Ops... já existe uma tarefa com essa descrição')
+        messageModal('Ops...', 'Ops... já existe uma tarefa com essa descrição')
 
     } else {
         let values = JSON.parse(localStorage.getItem(localStorageKey) || '[]')
@@ -28,6 +47,7 @@ btn_new_task.addEventListener('click', () => {
         })
         localStorage.setItem(localStorageKey, JSON.stringify(values))
         showValues()
+        messageModal('Ok', 'Nova tarefa adicionada')
         input.value = ''
 
     }
