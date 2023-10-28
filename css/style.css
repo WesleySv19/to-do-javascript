@@ -14,6 +14,18 @@ body {
     gap: 4rem;
 }
 
+h1 {
+    margin-bottom: 1em;
+    
+}
+
+main {
+    margin-top: 3em;
+    border: 5px double #32CD32;
+    padding: 3em;
+    border-radius: 5px;
+}
+
 .main_content {
     display: flex;
     flex-direction: column;
