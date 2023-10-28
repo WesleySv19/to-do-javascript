@@ -34,10 +34,10 @@ btn_new_task.addEventListener('click', () => {
     
     if(!input.value) {
         input.style.border = '2px solid #FF6347'
-        messageModal('Erro', 'Ops digite algo para inserir em sua lista')
+        messageModal('Ops...', 'Ops digite algo para inserir em sua lista')
 
     } else if(validateIfExistsNewTask()) {
-        messageModal('Ops...', 'Ops... já existe uma tarefa com essa descrição')
+        messageModal('Ops...', 'Já existe uma tarefa com essa descrição')
 
     } else {
         let values = JSON.parse(localStorage.getItem(localStorageKey) || '[]')
@@ -46,7 +46,7 @@ btn_new_task.addEventListener('click', () => {
         })
         localStorage.setItem(localStorageKey, JSON.stringify(values))
         showValues()
-        messageModal('Ok', 'Nova tarefa adicionada')
+        messageModal('Tarefa adicionada!', 'Uma nova tarefa foi adicionada a sua lista.')
         input.value = ''
 
     }
